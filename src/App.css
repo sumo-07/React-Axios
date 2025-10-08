@@ -1,0 +1,241 @@
+/* =========================================== */
+/* Design System & Variables              */
+/* =========================================== */
+:root {
+  --primary-color: #0056b3; /* A strong, accessible blue */
+  --danger-color: #dc3545;
+   --success-color: #28a745;
+  --dark-text: #212529; /* High contrast for titles */
+  --body-text: #5a6268; /* Softer, readable grey for body */
+  --light-grey: #d1d5db; /* A more visible grey for the counter */
+  --background-light: #f8f9fa;
+  --card-bg: #ffffff;
+  --font-primary: 'Poppins', -apple-system, sans-serif; /* Using the new font */
+}
+
+/* =========================================== */
+/* Main Section & Layout                     */
+/* =========================================== */
+.main-section {
+  font-family: var(--font-primary);
+  background-color: var(--background-light);
+  padding: 4rem 2rem;
+}
+
+.section-post {
+  max-width: 1100px; /* Wider container for the grid */
+  margin: 0 auto;
+}
+
+.section-post ol {
+  list-style: none;
+  counter-reset: post-counter;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem; /* Slightly more space between cards */
+}
+
+/* =========================================== */
+/* Improved Card Design                      */
+/* =========================================== */
+.section-post li {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* IMPROVEMENT: Adds a color accent and visual flair */
+  /* padding-left: 5rem; */
+  border-top: 4px solid var(--primary-color);
+  display: flex; /* Using flexbox to better control content flow */
+  flex-direction: column;
+}
+
+.section-post li:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* IMPROVEMENT: Made the number smaller and increased contrast */
+.section-post li::before {
+  counter-increment: post-counter;
+  content: counter(post-counter, decimal-leading-zero);
+  /* Removed all absolute positioning properties */
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--light-grey); /* Matched color to the border for style */
+  margin-bottom: 1.5rem; /* Creates space between the number and the title */
+  line-height: 1; /* Ensures tight spacing */
+}
+
+/* =========================================== */
+/* Eye-Catching & Readable Typography        */
+/* =========================================== */
+.section-post li .content-wrapper {
+  flex-grow: 1; /* Allows this wrapper to fill space, pushing buttons down */
+}
+
+/* Title */
+.section-post li p:first-of-type {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--dark-text);
+  line-height: 1.4;
+  margin: 0 0 0.75rem 0;
+}
+
+/* Body */
+/* Body */
+.section-post li p:nth-of-type(2) {
+  font-size: 1rem;
+  color: var(--body-text);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* =========================================== */
+/* Modern Button Styles                      */
+/* =========================================== */
+.section-post .button-group {
+    margin-top: 1.5rem; /* Pushes buttons away from text */
+}
+
+.section-post button {
+  padding: 0.7rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none; /* Removed border for a flatter, modern look */
+  transition: all 0.2s ease;
+}
+
+/* Edit Button */
+.section-post button:not(.btn-delete) {
+  background-color: #d4edda; /* Light green */
+  color: var(--success-color);
+}
+
+.section-post button:not(.btn-delete):hover {
+  background-color: var(--success-color);
+  color: #fff;
+}
+
+/* Space between buttons */
+.section-post button:not(:last-child) {
+  margin-right: 0.75rem;
+}
+
+/* Delete Button */
+.section-post .btn-delete {
+  background-color: #ffe3e3;
+  color: var(--danger-color);
+}
+
+.section-post .btn-delete:hover {
+  background-color: var(--danger-color);
+  color: #fff;
+}
+
+/* =========================================== */
+/* Responsive Grid for Posts                 */
+/* =========================================== */
+@media (max-width: 992px) {
+  .section-post ol {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .section-post ol {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+/* =========================================== */
+/* Editor Section Container                  */
+/* =========================================== */
+.editor {
+  font-family: 'Poppins', -apple-system, sans-serif;
+  background-color: #f8f9fa;
+  padding: 0.5rem 0.5rem;
+}
+
+.editor form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+  display: grid;
+  /* Creates 3 columns: 2 flexible for inputs, 1 auto-sized for the button */
+  grid-template-columns: 1fr 1fr auto; 
+  gap: 1rem;
+  transform: translateY(-20px);
+  align-items: end; /* Aligns items to the bottom for a clean look */
+}
+
+/* =========================================== */
+/* Input Fields & Labels                     */
+/* =========================================== */
+
+.editor label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.editor input[type="text"] {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  font-size: 1rem;
+  font-family: 'Poppins', -apple-system, sans-serif;
+  color: #333;
+  background-color: #fdfdff;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.editor input[type="text"]::placeholder {
+  color: #aab2bd;
+}
+
+.editor input[type="text"]:focus {
+  outline: none;
+  border-color: #0056b3;
+  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.2);
+}
+
+/* =========================================== */
+/* Submit Button                             */
+/* =========================================== */
+.editor button[type="submit"] {
+  /* grid-column: 1 / -1; <-- This line is now removed */
+  padding: 0.9rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #0056b3;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.editor button[type="submit"]:hover {
+  background-color: #004494;
+}
