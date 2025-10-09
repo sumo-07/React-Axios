@@ -64,7 +64,7 @@ export const Form= ({data, setData, updateDataApi, setUpdateDataApi})=>{
     //form submission
     const handleFormSubmit= (e)=>{
         e.preventDefault();
-        const action= e.nativeEvent.submitter.value; // isse uss button ki value mil jaayegi ki woh "Add" hia ya "Edit"
+        const action= e.nativeEvent.submitter.value; // isse uss button ki value mil jaayegi ki woh "Add" hai ya "Edit"
         if(action === "Add"){
             addPostData();
         }
