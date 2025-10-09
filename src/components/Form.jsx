@@ -51,7 +51,7 @@ export const Form= ({data, setData, updateDataApi, setUpdateDataApi})=>{
                     });
                 });
             }
-            setAddData({title: "", body: "", });
+            setAddData({title: "", body: "", }); // isko likho ya na likho baat same hai because, setUpdateDataApi toh usse "" string bnaa hee dera hai. lekin agar useEffect mei "||" use nhi kiya hota toh yeh line ka use krna hota.
             setUpdateDataApi({});   
 
         }catch(error){
